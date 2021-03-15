@@ -23,24 +23,43 @@ namespace Torres_de_Hanoi
         //Aumenta la cantidad de discos en la pila y el disco que está arriba
         public void push(Disco d)
         {
-            Elementos.Add(d);
-            Size++;
-            Top++;
+            if(Size == 0 || d.Valor < Elementos.Last().Valor)
+            {
+                Elementos.Add(d);
+                Size=Elementos.Count;
+                Top = Elementos.Last().Valor;
+            }
         }
         // Reduce la cantidad de discos en la pila, recarga el disco que está arriba y devuelve el disco que ha quitado
         public Disco pop()
         {
-            Disco discoFuera = Elementos.ElementAt(Size - 1);
-            Elementos.RemoveAt(Size - 1);
-            Size--;
-            Top--;
+            Disco discoFuera = new Disco();
+            if(Size > 0)
+            {
+                discoFuera = Elementos.Last();
+                Elementos.RemoveAt(Size - 1);
+                Size=Elementos.Count;
+
+                if (Size == 0)
+                {
+                    Top = 0;
+                }
+                else
+                {
+                    Top = Elementos.Last().Valor;
+                }
+            }
             return discoFuera;
         }
 
         // Devuelve true si el tamaño es 0
         public bool isEmpty()
         {
-            return Size == 0;
+            if(Size == 0)
+            {
+                return true;
+            }
+            return false;
         }
     }
 }
