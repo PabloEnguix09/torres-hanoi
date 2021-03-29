@@ -15,7 +15,14 @@ namespace Torres_de_Hanoi
             Pila fin = new Pila();
             // Keep the console window open in debug mode.
             Console.WriteLine("Indique el número de discos que va a utilizar: ");
-            int cuantos = Convert.ToInt32(Console.ReadKey().KeyChar.ToString());
+            string key = Console.ReadLine();
+            int cuantos = 0;
+            while (!Int32.TryParse(key, out cuantos) || Int32.Parse(key) < 0)
+            {
+                Console.WriteLine("Inténtelo de nuevo");
+                key = Console.ReadLine();
+            }
+
             for (int i = cuantos; i > 0; i--)
             {
                 Disco disco = new Disco();
@@ -26,15 +33,12 @@ namespace Torres_de_Hanoi
 
             int pasosRecursivo = Hanoi.recursivo(cuantos, ini, aux, fin);
 
-            Console.WriteLine("------------------------------");
-            Console.WriteLine("Algoritmo iterativo");
-            Console.WriteLine("Pasos realizados: " + pasos);
+            Console.WriteLine("-----------------------------------");
+            Console.WriteLine("Pasos realizados con iterativo: " + pasos);
+            Console.WriteLine("Pasos realizados con recursivo: " + pasosRecursivo);
             Console.WriteLine("Pasos mínimos: " + (Math.Pow(2, cuantos) - 1));
-            Console.WriteLine("------------------------------");
-            Console.WriteLine("Algoritmo recursivo");
-            Console.WriteLine("Pasos realizados: " + pasosRecursivo);
-            Console.WriteLine("Pasos mínimos: " + (Math.Pow(2, cuantos) - 1));
-            Console.WriteLine("------------------------------");
+            Console.WriteLine("-----------------------------------");
+
         }
     }
 }
