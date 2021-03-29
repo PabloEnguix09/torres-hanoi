@@ -23,8 +23,18 @@ namespace Torres_de_Hanoi
                 ini.push(disco);
             }
             int pasos = Hanoi.iterativo(cuantos, ini, fin, aux);
+
+            int pasosRecursivo = Hanoi.recursivo(cuantos, ini, aux, fin);
+
+            Console.WriteLine("------------------------------");
+            Console.WriteLine("Algoritmo iterativo");
             Console.WriteLine("Pasos realizados: " + pasos);
             Console.WriteLine("Pasos mínimos: " + (Math.Pow(2, cuantos) - 1));
+            Console.WriteLine("------------------------------");
+            Console.WriteLine("Algoritmo recursivo");
+            Console.WriteLine("Pasos realizados: " + pasosRecursivo);
+            Console.WriteLine("Pasos mínimos: " + (Math.Pow(2, cuantos) - 1));
+            Console.WriteLine("------------------------------");
         }
     }
 }
