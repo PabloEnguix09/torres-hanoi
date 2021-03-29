@@ -38,7 +38,6 @@ namespace Torres_de_Hanoi
             Console.WriteLine("Pasos realizados con recursivo: " + pasosRecursivo);
             Console.WriteLine("Pasos mínimos: " + (Math.Pow(2, cuantos) - 1));
             Console.WriteLine("-----------------------------------");
-
         }
     }
 }
